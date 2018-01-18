@@ -1,4 +1,3 @@
-
 module.exports = class Note {
   constructor(title, body) {
     this.title = title,
@@ -10,4 +9,7 @@ module.exports = class Note {
   printBody() {
     console.log(this.body);
   }
+  static create(obj) {
+    return new Note(obj.title, obj.body);
+ }
 };

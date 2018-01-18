@@ -8,3 +8,8 @@ const notes = [newNote, newNote2];
 database.save(notes);
 
 const loadedNotes = database.load();
+const loadedNotesFromDb = loadedNotes.map(note.create);
+loadedNotesFromDb[0].printTitle();
+loadedNotesFromDb[0].printBody();
+loadedNotesFromDb[1].printTitle();
+loadedNotesFromDb[1].printBody();
