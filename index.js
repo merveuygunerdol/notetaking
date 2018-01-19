@@ -5,9 +5,16 @@ const database = require('./database');
 const noteservice = require('./services/note-services');
 
 const app = express();
+app.set('view engine', 'pug');
+
 app.get('/', async(req, res, next) => {
-  res.send(await noteservice.findAll());
+  res.render('index');
+  // res.send(await noteservice.findAll());
 });
+app.get('/notes/all', async (req, res, next) => {
+  const notes = await noteservice.findAll();
+  res.render('note', { notes });
+}); // we want to fetch list of notes
 
 app.listen(3030, () => {
   console.log('Server Listening');
