@@ -3,7 +3,7 @@ const bodyparser = require('body-parser');
 const axios = require('axios');
 const note = require('./models/note-model');
 const database = require('./database');
-const noteservice = require('./services/note-services');
+const noteservice = require('./services/note-service');
 
 const app = express();
 app.use(bodyparser.json());
