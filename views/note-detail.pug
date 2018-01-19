@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+    style.
+        h1{ color: #b20000; font-weight: bold }
+        h2{ color: #4c0000; font-weight: normal; text-decoration:none }
+
+    if note
+        h1 #{note.title}
+        h2 #{note.body}
+    else
+        h1 Note is not found!
+    script.
+        console.log(!{JSON.stringify(note)})
