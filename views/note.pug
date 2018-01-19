@@ -5,11 +5,11 @@ block content
     h3 Hey! You have #{notes.length} notes
 
     style.
-             p { color: #ffa500; text-decoration: underline; }
-             p1 { color: #363636 }
+             p { color: #ffa500; font-weight: bold }
+             p1 { color: #363636; font-weight: normal }
 
     each note in notes
-        strong
-            p Note Title:
-        normal
-            p1 #{note.title}
+         p Note Title:
+                        p1  #{note.title}
+         p Note Body:
+                        p1  #{note.body}
