@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h2 List of Your Notes:
+    h3 Hey! You have #{notes.length} notes
+
+    style.
+             p { color: #ffa500; text-decoration: underline; }
+             p1 { color: #363636 }
+
+    each note in notes
+        strong
+            p Note Title:
+        normal
+            p1 #{note.title}
