@@ -1,5 +1,6 @@
 module.exports = class Note {
-  constructor(title, body) {
+  constructor(id, title, body) {
+    this.id = id;
     this.title = title,
     this.body = body;
   }
@@ -10,6 +11,6 @@ module.exports = class Note {
     console.log(this.body);
   }
   static create(obj) {
-    return new Note(obj.title, obj.body);
+    return new Note(obj.id, obj.title, obj.body);
   }
 };

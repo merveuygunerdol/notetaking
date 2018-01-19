@@ -2,18 +2,19 @@ const axios = require('axios');
 const express = require('express');
 const note = require('./models/note-model');
 const database = require('./database');
+const noteservice = require('./services/note-services');
 
 const app = express();
-app.get('/', (req, res, next) => {
-  res.send('HELLO MY FIRST WEB APP PROJECT');
+app.get('/', async(req, res, next) => {
+  res.send(await noteservice.findAll());
 });
 
 app.listen(3030, () => {
   console.log('Server Listening');
 });
 
-const newNote = new note('note1', 'body1');
-const newNote2 = new note('note2', 'body2');
+const newNote = new note(0, 'note1', 'body1');
+const newNote2 = new note(1, 'note2', 'body2');
 const notes = [newNote, newNote2];
 
 // database.save(notes, (err) => {
