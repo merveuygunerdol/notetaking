@@ -7,16 +7,7 @@ async function findAll() {
 }
 
 async function add(note) {
-  const allNotes = await findAll();
-  const lastNote = allNotes[allNotes.length - 1];
-  const lastNoteId = lastNote && lastNote.id || 0;
-  note.id = lastNoteId + 1;
-
-  note = noteModel.create(note);
-  allNotes.push(note);
-
-  await saveAll(allNotes);
-  return note;
+  return noteModel.create(note);
 }
 
 async function del(noteid) {
