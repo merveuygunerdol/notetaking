@@ -14,9 +14,8 @@ async function del(id) {
   return noteModel.remove({ id });
 }
 
-async function find(noteid) {
-  const allNotes = await findAll();
-  return allNotes.find(n => n.id == noteid);
+async function find(id) {
+  return noteModel.findOne({id})
 }
 
 async function saveAll(notes) {
