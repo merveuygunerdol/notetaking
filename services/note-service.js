@@ -10,12 +10,8 @@ async function add(note) {
   return noteModel.create(note);
 }
 
-async function del(noteid) {
-  const allNotes = await findAll();
-  const noteIndex = allNotes.findIndex(n => n.id == noteid);
-  if (noteIndex < 0) return;
-  allNotes.splice(noteIndex, 1);
-  saveAll(allNotes);
+async function del(id) {
+  return noteModel.remove({ id });
 }
 
 async function find(noteid) {
