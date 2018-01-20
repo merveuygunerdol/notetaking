@@ -1,5 +1,6 @@
 const fs = require('fs');
 const noteModel = require('../models/note-model');
+
 const dbPath = `${__dirname}/../notes-data.json`;
 
 async function findAll() {
@@ -15,16 +16,7 @@ async function del(id) {
 }
 
 async function find(id) {
-  return noteModel.findOne({id})
-}
-
-async function saveAll(notes) {
-  return new Promise((resolve, reject) => {
-    fs.writeFile(dbPath, JSON.stringify(notes), (err, file) => {
-      if (err) return reject(err);
-      resolve();
-    });
-  });
+  return noteModel.findOne({ id });
 }
 
 module.exports = {
