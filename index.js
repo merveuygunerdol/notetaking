@@ -2,6 +2,7 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const cookieparser = require('cookie-parser');
 
+require('./database-connection');
 const app = express();
 app.use(bodyparser.json());
 app.use(cookieparser());

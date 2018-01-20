@@ -3,13 +3,7 @@ const noteModel = require('../models/note-model');
 const dbPath = `${__dirname}/../notes-data.json`;
 
 async function findAll() {
-  return new Promise((resolve, reject) => {
-    fs.readFile(dbPath, 'utf8', (err, file) => {
-      if (err) return reject(err);
-      const notes = JSON.parse(file).map(noteModel.create);
-      resolve(notes);
-    });
-  });
+  return noteModel.find();
 }
 
 async function add(note) {
