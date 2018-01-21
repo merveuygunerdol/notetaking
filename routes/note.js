@@ -24,6 +24,16 @@ router.post('/', async (req, res, next) => {
   res.send(note);
 });
 
+router.post('/:noteId/todo', async (req, res, next) => {
+  const note = await noteService.find(req.params.noteId);
+  const todo = await noteService.find(req.body.todoId);
+
+  note.todo.push(todo);
+  await todo.save();
+  const newNote = await note.save();
+  res.send(newNote);
+});
+
 router.delete('/:id', async (req, res, next) => {
   await noteService.del(req.params.id);
 

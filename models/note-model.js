@@ -10,6 +10,10 @@ const noteSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  todo: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Note',
+  }],
 });
 noteSchema.plugin(AutoIncrement, { inc_field: 'id' });
 module.exports = mongoose.model('Note', noteSchema);
