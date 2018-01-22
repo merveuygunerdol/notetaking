@@ -28,3 +28,18 @@ test('Create new note', async (t) => {
   t.is(res.body.title, noteToCreate.title); // check the fields - is title matching w/ the note that I create
   t.is(res.body.body, noteToCreate.body);
 });
+
+test('Get details of a note', async (t) => {
+  t.plan(2);
+
+  const note = (await request(app)
+    .post('/note')
+    .send({ title: 'Title2', body: 'Body2' }))
+    .body;
+
+  const show = await request(app)
+    .get(`/note/${note.id}/json`);
+
+  t.is(show.status, 200);
+  t.deepEqual(show.body, note); // body of the response(note) should exactly match the note that I created before
+});

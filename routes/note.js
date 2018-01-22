@@ -18,6 +18,12 @@ router.get('/:id', async (req, res, next) => {
   res.render('note-detail', { note });
 });
 
+router.get('/:id/json', async (req, res, next) => {
+  const note = await noteService.find(req.params.id);
+  if (!note) res.status(404);
+  res.send(note);
+});
+
 router.post('/', async (req, res, next) => {
   const note = await noteService.add(req.body);
 
