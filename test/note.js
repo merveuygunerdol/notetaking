@@ -43,3 +43,23 @@ test('Get details of a note', async (t) => {
   t.is(show.status, 200);
   t.deepEqual(show.body, note); // body of the response(note) should exactly match the note that I created before
 });
+
+test('Delete a note', async (t) => {
+  t.plan(3); // 3 assertions to complete the test. very useful for async operations
+
+  const note = (await request(app)
+    .post('/note')
+    .send({ title: 'Title3', body: 'Body3' }))
+    .body;
+
+  const del = await request(app)
+    .delete(`/note/${note.id}`);
+
+  t.is(del.status, 200);
+  t.is(del.text, 'Note Deleted!');
+
+  const show = await request(app)
+    .get(`/note/${note.id}/json`); // try to find again, if note is not there, code should work
+
+  t.is(show.status, 404);
+});
