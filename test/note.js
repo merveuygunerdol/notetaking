@@ -85,3 +85,14 @@ test('Add to-do List', async (t) => {
 
   t.deepEqual(updatedNote.todo[0], toDoList);
 });
+
+test('Show notes', async (t) => {
+  const note = (await request(app)
+    .post('/note/notes')
+    .send({ title: 'Title9', body: 'Body9' }));
+
+  const show = await request(app)
+    .get('/note/notes');
+
+  t.is(show.status, 200);
+});
