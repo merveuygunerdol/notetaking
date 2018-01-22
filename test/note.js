@@ -108,3 +108,13 @@ test('Show detail', async (t) => {
 
   t.is(show.status, 200);
 });
+
+test('Index', async (t) => {
+  const show = await request(app)
+    .get('/');
+
+  t.is(show.status, 200);
+});
+app.get('/', (req, res, next) => {
+  res.render('index');
+});
