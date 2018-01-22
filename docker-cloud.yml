@@ -3,7 +3,7 @@ app:
   environment:
     - 'DB_URL=mongodb://mongodb/notetaking'
     - VIRTUAL_HOST=note-taking.merveerdol.com
-  image: 'merveer/notetaking:latest'
+  image: 'merveuygunerdol/notetaking:latest'
   ports:
     - '3030'
   restart: on-failure
