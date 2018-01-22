@@ -96,3 +96,15 @@ test('Show notes', async (t) => {
 
   t.is(show.status, 200);
 });
+
+test('Show detail', async (t) => {
+  const note = (await request(app)
+    .post('/note')
+    .send({ title: 'Title10', body: 'Body10' }))
+    .body;
+
+  const show = await request(app)
+    .get(`/note/${note.id}`);
+
+  t.is(show.status, 200);
+});
