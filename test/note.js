@@ -63,3 +63,25 @@ test('Delete a note', async (t) => {
 
   t.is(show.status, 404);
 });
+
+test('Add to-do List', async (t) => {
+  const note = (await request(app)
+    .post('/note')
+    .send({ title: 'Title4', body: 'Body4' }))
+    .body;
+
+  const toDoList = (await request(app)
+    .post('/note')
+    .send({ title: 'Title5', body: 'Body5' }))
+    .body;
+
+  const addToDoList = (await request(app)
+    .post(`/note/${note.id}/todo`)
+    .send({ todoId: toDoList.id }));
+
+  const updatedNote = (await request(app)
+    .get(`/note/${note.id}/json`))
+    .body;
+
+  t.deepEqual(updatedNote.todo[0], toDoList);
+});

@@ -29,7 +29,7 @@ router.post('/', async (req, res, next) => {
 
   res.send(note);
 });
-
+// to-do list
 router.post('/:noteId/todo', async (req, res, next) => {
   const note = await noteService.find(req.params.noteId);
   const todo = await noteService.find(req.body.todoId);
