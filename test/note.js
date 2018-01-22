@@ -16,3 +16,15 @@ test('Get list of notes', async (t) => {
   t.true(Array.isArray(res.body), 'Body should be an array');
   t.true(res.body.length > 0); // there should be at least 1 note
 });
+
+test('Create new note', async (t) => {
+  const noteToCreate = { title: 'Title1', body: 'Body1' };
+
+  const res = await request(app) // calls the backend api - creates a record in mongodb then api returns the created note
+    .post('/note')
+    .send(noteToCreate);
+
+  t.is(res.status, 200);
+  t.is(res.body.title, noteToCreate.title); // check the fields - is title matching w/ the note that I create
+  t.is(res.body.body, noteToCreate.body);
+});
