@@ -25,9 +25,9 @@ app.get('/', (req, res, next) => {
 });
 
 app.post('/register', (req, res) => {
-  const email = req.body.email;
+  //const email = req.body.email;
   const password = req.body.password;
-  register.add({email, password});
+  //register.add({email, password});
   res.send({
     message: `Hello ${email}`,
   });
