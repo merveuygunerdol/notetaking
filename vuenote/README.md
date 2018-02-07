@@ -1,4 +1,4 @@
-# notevue
+# vuenote
 
 > A Vue.js project
 
