@@ -4,6 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
+import note from '@/components/note'
+import delButton from '@/components/removeButton'
+
+Vue.component('note', note)
+Vue.component('delButton', delButton)
 
 Vue.config.productionTip = false
 

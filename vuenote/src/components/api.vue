@@ -2,8 +2,9 @@
 <div>
   <ul v-if="posts && posts.length">
     <li v-for="post of posts" :key="post">
-      <p><strong>{{post.title}}</strong></p>
-      <p>{{post.body}}</p>
+      <strong><child :message="post.title"></child></strong>
+      <child :message="post.body"></child>
+        <delButton></delButton>
     </li>
   </ul>
 
@@ -20,6 +21,8 @@
 /* eslint-disable */
 import axios from 'axios';
 import HTTP from '../main.js';
+import note from '@/components/note.vue'
+import delButton from './removeButton.vue'
 window.axios = axios
 export default {
 // eslint-disable-next-line
@@ -29,7 +32,6 @@ export default {
       errors: []
     }
   },
-
   // Fetches posts when the component is created.
   created() {
     axios.get(`http://localhost:3030/note`)
