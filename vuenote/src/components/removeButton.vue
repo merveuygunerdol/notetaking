@@ -3,7 +3,6 @@
     <button v-on:click="remove">Delete</button>
   </div>
 </template>
-
 <script>
 // eslint-disable-next-line
 /* eslint-disable */
