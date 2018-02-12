@@ -13,15 +13,16 @@ Vue.component('delButton', delButton);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
+// eslint-disable-next-line
 new Vue({
-    el: '#app',
-    router,
-    components: { App },
-    template: '<App/>'
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App/>',
 });
-export let HTTP = axios.create({
-    baseURL: 'http://localhost:3030/note',
-    headers: {
-        Authorization: 'Bearer {token}'
-    }
+export const HTTP = axios.create({
+  baseURL: 'http://localhost:3030/note',
+  headers: {
+    Authorization: 'Bearer {token}',
+  },
 });

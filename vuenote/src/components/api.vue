@@ -2,8 +2,7 @@
 <div>
   <ul v-if="posts && posts.length">
     <li v-for="post of posts" :key="post">
-      <note :title="post.title"></note>
-      <note :body="post.body"></note>
+      <note v-bind="post"></note>
     </li>
   </ul>
 
@@ -25,7 +24,7 @@ window.axios = axios
 export default {
 // eslint-disable-next-line
     components: {
-   'note': note
+      note
   },
   data() {
     return {

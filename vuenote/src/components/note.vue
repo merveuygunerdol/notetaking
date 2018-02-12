@@ -1,9 +1,9 @@
 <template>
-<div id="hellonote">
-   <p>{{ title }}</p>
-   <p>{{ body }}</p>
-   <delButton></delButton>
-</div>
+  <div id="hellonote" v-bind="post">
+    <p>{{ title }}</p>
+    <p>{{ body }}</p>
+    <delButton></delButton>
+  </div>
 </template>
 <script>
 // eslint-disable-next-line
@@ -14,6 +14,6 @@ import delButton from './removeButton.vue'
     components: {
       'delButton':delButton
     },
-    props: ['title', 'body']
-  }
+    props: ['title', 'body'],
+        }
 </script>
