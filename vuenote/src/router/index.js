@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import api from '@/components/api';
+import mainPage from '@/components/mainPage';
 import HelloWorld from '@/components/HelloWorld.vue';
 
 Vue.use(Router);
@@ -14,8 +14,8 @@ export default new Router({
         },
         {
             path: '/note',
-            name: 'api',
-            component: api,
+            name: 'mainPage',
+            component: mainPage,
         },
     ],
 });

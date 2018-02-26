@@ -1,5 +1,6 @@
 <template>
 <div>
+  <h1> Welcome to HelloNote </h1>
   <ul v-if="posts && posts.length">
     <li v-for="post of posts" :key="post">
       <note v-bind="post"></note>
