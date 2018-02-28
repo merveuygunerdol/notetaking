@@ -1,6 +1,7 @@
 <template>
 <div>
   <h1> Welcome to HelloNote </h1>
+      <search></search>
   <ul v-if="posts && posts.length">
     <li v-for="post of posts" :key="post">
       <note v-bind="post"></note>
@@ -21,11 +22,13 @@
 import axios from 'axios';
 import HTTP from '../main.js';
 import note from '@/components/note.vue'
+import search from '@/components/search.vue'
 window.axios = axios
 export default {
 // eslint-disable-next-line
     components: {
-      note
+      note,
+      search
   },
   data() {
     return {
