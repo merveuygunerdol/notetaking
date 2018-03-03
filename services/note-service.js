@@ -4,7 +4,7 @@ const noteModel = require('../models/note-model');
 const dbPath = `${__dirname}/../notes-data.json`;
 
 async function findAll() {
-  return noteModel.find().populate('todo');
+  return noteModel.find().populate('todo').limit(5);
 }
 
 async function add(note) {
