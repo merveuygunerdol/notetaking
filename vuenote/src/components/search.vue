@@ -26,33 +26,21 @@
 /* Hide un-compiled mustache bindings
 until the Vue instance is ready */
 
-[v-cloak] {
-  display: none;
-}
 
-
-body{
-    font:15px/1.3 'Open Sans', sans-serif;
-    color: #5e5b64;
-    text-align:center;
-}
 
 /*-------------------------
     The search input
 --------------------------*/
 
 .bar{
-    background-color:#5c9bb7;
-    background-image:-webkit-linear-gradient(top, #5c9bb7, #5392ad);
-    background-image:-moz-linear-gradient(top, #5c9bb7, #5392ad);
-    background-image:linear-gradient(top, #5c9bb7, #5392ad);
+    background-color:#75d0b2;
+    background-image:-webkit-linear-gradient(top, #75d0b2, #75d0b2);
+    background-image:-moz-linear-gradient(top, #75d0b2, #75d0b2);
+    background-image:linear-gradient(top, #75d0b2, #75d0b2);
 
     box-shadow: 0 1px 1px #ccc;
     border-radius: 2px;
-    width: 400px;
-    padding: 14px;
-    margin: 45px auto 20px;
-    position:relative;
+
 }
 
 .bar input{
