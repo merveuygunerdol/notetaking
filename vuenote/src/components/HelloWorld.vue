@@ -1,113 +1,75 @@
-<template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
-  </div>
+<template lang="html">
+<body>
+  <h1 class="title is-1">Welcome to HelloNote</h1>
+    <section class="section">
+      <div class="container">
+        <div class="content">
+          <div class="columns">
+            <div class="column is-three-fifths ">
+              <h2 class="subtitle">
+              Here are your last notes
+              </h2>
+                <li v-for="post of posts" :key="post">
+                  <note v-bind="post"></note>
+               </li>
+          </div>
+              <div class="column">
+                <search></search>
+                  <a href="" class="button is-danger is-large">
+                    Add a Note</a>
+              </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
 </template>
-
 <script>
+// eslint-disable-next-line
+/* eslint-disable */
+import axios from 'axios';
+import HTTP from '../main.js';
+import note from '@/components/note.vue'
+import search from '@/components/search.vue'
+window.axios = axios
 export default {
-  name: 'HelloWorld',
-  data () {
+// eslint-disable-next-line
+    components: {
+      note,
+      search
+  },
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      posts: [],
+      errors: []
     }
+  },
+  // Fetches posts when the component is created.
+  created() {
+    axios.get(`http://localhost:3030/note`)
+    .then(response => {
+      // JSON responses are automatically parsed.
+      this.posts = response.data
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+
+    // async / await version (created() becomes async created())
+    //
+    // try {
+    //   const response = await axios.get(`http://jsonplaceholder.typicode.com/posts`)
+    //   this.posts = response.data
+    // } catch (e) {
+    //   this.errors.push(e)
+    // }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+<style>
+.title {
+color:slateblue;
 }
 </style>
+
+
