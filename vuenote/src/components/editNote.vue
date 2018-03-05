@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="section">
     <h2 class="title is-2"> Edit This Note </h2>
-    <noteForm :is-edit="true"/>
+    <noteForm :is-edit="true" />
   </div>
 </template>
 <script>

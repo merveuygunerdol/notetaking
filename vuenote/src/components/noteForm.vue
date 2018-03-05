@@ -27,7 +27,7 @@
               <div class="buttons">
                 <span
                   v-if="isEdit"
-                  class="button is-success"> Edit</span>
+                  class="button is-success">Edit</span>
                 <span
                   v-if="!isEdit"
                   class="button is-info">Save </span>
@@ -37,15 +37,14 @@
         </div>
       </div>
     </div>
-
   </body>
 </template>
 <script>
 export default {
     props: {
         isEdit: {
-            type: Boolean,
-            default: false
+            type:  Boolean,
+            default:  false
         }
     }
 };
