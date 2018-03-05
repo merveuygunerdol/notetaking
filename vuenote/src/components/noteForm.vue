@@ -45,6 +45,7 @@ export default {
     props: {
         isEdit: {
             type: Boolean,
+            default: false
         }
     }
 };

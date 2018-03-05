@@ -10,7 +10,7 @@ import "bulma/css/bulma.css";
 Vue.component("note", note);
 
 Vue.config.productionTip = false;
-window.axios = axios
+window.axios = axios;
 /* eslint-disable no-new */
 // eslint-disable-next-line
 new Vue({
