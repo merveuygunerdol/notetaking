@@ -35,7 +35,6 @@ import axios from 'axios';
 import HTTP from '../main.js';
 import note from '@/components/note.vue'
 import search from '@/components/search.vue'
-window.axios = axios
 export default {
     components: {
       note,

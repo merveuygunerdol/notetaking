@@ -20,12 +20,14 @@ test('Get list of notes', async (t) => {
 test('Create new note', async (t) => {
   const noteToCreate = { title: 'Title1', body: 'Body1' };
 
-  const res = await request(app) // calls the backend api - creates a record in mongodb then api returns the created note
+  const res = await request(app) // calls the backend api -
+  // creates a record in mongodb then api returns the created note
     .post('/note')
     .send(noteToCreate);
 
   t.is(res.status, 200);
-  t.is(res.body.title, noteToCreate.title); // check the fields - is title matching w/ the note that I create
+  t.is(res.body.title, noteToCreate.title); // check the fields -
+  // is title matching w/ the note that I create
   t.is(res.body.body, noteToCreate.body);
 });
 
@@ -41,7 +43,8 @@ test('Get details of a note', async (t) => {
     .get(`/note/${note.id}/json`);
 
   t.is(show.status, 200);
-  t.deepEqual(show.body, note); // body of the response(note) should exactly match the note that I created before
+  t.deepEqual(show.body, note); // body of the response(note)
+  // should exactly match the note that I created before
 });
 
 test('Delete a note', async (t) => {
