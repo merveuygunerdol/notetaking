@@ -1,14 +1,15 @@
 <template>
-  <div id="hellonote" v-bind="post">
-    <p>{{ title }}</p>
-    <p>{{ body }}</p>
-      <div class="remove-button">
-    <button type="button" @click="deleteNote">Delete</button>
-  </div>
-  <div class="edit-button">
-    <button type="button" @click="editNote">Edit</button>
-  </div>
-  </div>
+    <div class="tile">
+        <article class="tile is-child notification is-primary">
+          <p class="title">{{ title }}</p>
+          <p class="subtitle">{{ body }}</p>
+          <div class="buttons has-addons">
+  <a class="button is-rounded is-inverted is-primary">Edit</a>
+  <a class="button is-rounded is-danger is-inverted">Delete</a>
+</div>
+        </article>
+
+    </div>
 </template>
 <script>
 // eslint-disable-next-line
@@ -29,3 +30,7 @@
         }
         }
 </script>
+<style>
+  li {list-style-type: none;}
+</style>
+
