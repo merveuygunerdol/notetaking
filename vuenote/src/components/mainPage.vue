@@ -58,3 +58,6 @@ export default {
   }
 }
 </script>
+<style>
+  li {list-style-type: none;}
+</style>
