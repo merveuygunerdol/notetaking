@@ -1,29 +1,21 @@
-<template lang="html">
-<body>
-  <h1 class="title is-1">Welcome to HelloNote</h1>
-    <section class="section">
-      <div class="container">
-        <div class="content">
-          <div class="columns">
-            <div class="column is-three-fifths ">
-              <h2 class="subtitle">
-              Here are your last notes
-              </h2>
-                <li v-for="post of posts" :key="post">
-                  <note v-bind="post"></note>
-               </li>
-          </div>
-              <div class="column">
-                <search></search>
-                  <a href="" class="button is-danger is-large">
-                    Add a Note</a>
-              </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</body>
+<template>
+<div>
+  <h1> Welcome to HelloNote </h1>
+      <search></search>
+  <ul v-if="posts && posts.length">
+    <li v-for="post of posts" :key="post">
+      <note v-bind="post"></note>
+    </li>
+  </ul>
+
+  <ul v-if="errors && errors.length">
+    <li v-for="error of errors" :key="error">
+      {{error.message}}
+    </li>
+  </ul>
+</div>
 </template>
+
 <script>
 // eslint-disable-next-line
 /* eslint-disable */
@@ -67,9 +59,5 @@ export default {
 }
 </script>
 <style>
-.title {
-color:slateblue;
-}
+  li {list-style-type: none;}
 </style>
-
-
