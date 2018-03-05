@@ -1,21 +1,28 @@
 <template>
-<form id="main" v-cloak>
+  <form
+    id="main"
+    v-cloak>
 
     <div class="bar">
-        <!-- Create a binding between the searchString model and the text field -->
+      <!-- Create a binding between the searchString model and the text field -->
 
-        <input type="text" v-model="searchString" placeholder="Search Notes" />
+      <input
+        type="text"
+        v-model="searchString"
+        placeholder="Search Notes" >
     </div>
 
     <ul>
-        <!-- Render a li element for every entry in the computed filteredArticles array. -->
+      <!-- Render a li element for every entry in the computed filteredArticles array. -->
 
-        <li v-for="post in posts" :key="post">
-            <p>{{note.title}}</p>
-        </li>
+      <li
+        v-for="post in posts"
+        :key="post">
+        <p>{{ note.title }}</p>
+      </li>
     </ul>
 
-</form>
+  </form>
 </template>
 
 <script>

@@ -1,19 +1,23 @@
 <template>
-<div>
-  <h1> Welcome to HelloNote </h1>
-      <search></search>
-  <ul v-if="posts && posts.length">
-    <li v-for="post of posts" :key="post">
-      <note v-bind="post"></note>
-    </li>
-  </ul>
+  <div>
+    <h1> Welcome to HelloNote </h1>
+    <search/>
+    <ul v-if="posts && posts.length">
+      <li
+        v-for="post of posts"
+        :key="post">
+        <note v-bind="post"/>
+      </li>
+    </ul>
 
-  <ul v-if="errors && errors.length">
-    <li v-for="error of errors" :key="error">
-      {{error.message}}
-    </li>
-  </ul>
-</div>
+    <ul v-if="errors && errors.length">
+      <li
+        v-for="error of errors"
+        :key="error">
+        {{ error.message }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>

@@ -1,28 +1,32 @@
 <template lang="html">
-<body>
-  <h1 class="title is-1">Welcome to HelloNote</h1>
+  <body>
+    <h1 class="title is-1">Welcome to HelloNote</h1>
     <section class="section">
       <div class="container">
         <div class="content">
           <div class="columns">
             <div class="column is-three-fifths ">
               <h2 class="subtitle">
-              Here are your last notes
+                Here are your last notes
               </h2>
-                <li v-for="post of posts" :key="post">
-                  <note v-bind="post"></note>
-               </li>
+              <li
+                v-for="post of posts"
+                :key="post">
+                <note v-bind="post"/>
+              </li>
+            </div>
+            <div class="column">
+              <search/>
+              <a
+                href=""
+                class="button is-danger is-large">
+              Add a Note</a>
+            </div>
           </div>
-              <div class="column">
-                <search></search>
-                  <a href="" class="button is-danger is-large">
-                    Add a Note</a>
-              </div>
         </div>
       </div>
-    </div>
-  </section>
-</body>
+    </section>
+  </body>
 </template>
 <script>
 // eslint-disable-next-line
@@ -33,7 +37,6 @@ import note from '@/components/note.vue'
 import search from '@/components/search.vue'
 window.axios = axios
 export default {
-// eslint-disable-next-line
     components: {
       note,
       search

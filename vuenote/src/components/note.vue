@@ -1,15 +1,15 @@
 <template>
-    <div class="tile">
-        <article class="tile is-child notification is-primary">
-          <p class="title">{{ title }}</p>
-          <p class="subtitle">{{ body }}</p>
-          <div class="buttons has-addons">
-  <a class="button is-rounded is-inverted is-primary">Edit</a>
-  <a class="button is-rounded is-danger is-inverted">Delete</a>
-</div>
-        </article>
+  <div class="tile">
+    <article class="tile is-child notification is-primary">
+      <p class="title">{{ title }}</p>
+      <p class="subtitle">{{ body }}</p>
+      <div class="buttons has-addons">
+        <a class="button is-rounded is-inverted is-primary">Edit</a>
+        <a class="button is-rounded is-danger is-inverted">Delete</a>
+      </div>
+    </article>
 
-    </div>
+  </div>
 </template>
 <script>
 // eslint-disable-next-line

@@ -11,5 +11,5 @@ module.exports = class Note {
   }
   static create(obj) {
     return new Note(obj.title, obj.body);
- }
+  }
 };
