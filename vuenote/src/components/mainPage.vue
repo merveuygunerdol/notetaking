@@ -1,6 +1,6 @@
 <template lang="html">
   <body>
-    <h1 class="title is-1">Welcome to HelloNote</h1>
+    <h1 class="title is-1"> {{ mainPageTitle }} </h1>
     <section class="section">
       <div class="container">
         <div class="content">
@@ -43,7 +43,8 @@ export default {
   data() {
     return {
       posts: [],
-      errors: []
+      errors: [],
+      mainPageTitle: 'Welcome to HelloNote'
     }
   },
   // Fetches posts when the component is created.

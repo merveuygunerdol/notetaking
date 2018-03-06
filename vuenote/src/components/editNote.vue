@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="section">
-    <h2 class="title is-2"> Edit This Note </h2>
+    <h2 class="title is-2"> {{ editTitle }} </h2>
     <noteForm :is-edit="true" />
   </div>
 </template>
@@ -20,7 +20,8 @@ export default {
     data() {
         return {
             posts: [],
-            errors: []
+            errors: [],
+            editTitle: "Edit This Note",
         };
     },
     // Fetches posts when the component is created.
