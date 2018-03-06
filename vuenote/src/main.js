@@ -6,17 +6,17 @@ import App from "./App.vue";
 import router from "./router";
 import note from "./components/note.vue";
 import "bulma/css/bulma.css";
+import Icon from "vue-awesome/components/Icon";
 
 Vue.component("note", note);
+Vue.component("icon", Icon);
 
 Vue.config.productionTip = false;
 window.axios = axios;
-/* eslint-disable no-new */
-// eslint-disable-next-line
 new Vue({
     el: "#app",
     router,
-    components: { App },
+    components: { App, Icon },
     template: "<App/>",
 });
 export const HTTP = axios.create({
