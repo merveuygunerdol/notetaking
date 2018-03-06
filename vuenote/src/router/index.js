@@ -5,6 +5,7 @@ import mainPage from "@/components/mainPage.vue";
 import noteForm from "@/components/noteForm.vue";
 import editNote from "@/components/editNote.vue";
 import addNote from "@/components/addNote.vue";
+import signUp from "@/components/signUp.vue";
 
 Vue.use(Router);
 
@@ -34,6 +35,11 @@ export default new Router({
             path: "/addNote",
             name: "addNote",
             component: addNote,
+        },
+        {
+            path: "/signUp",
+            name: "signUp",
+            component: signUp,
         },
     ],
 });
