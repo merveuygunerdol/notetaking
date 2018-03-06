@@ -4,6 +4,7 @@ import notes from "@/components/notes.vue";
 import mainPage from "@/components/mainPage.vue";
 import noteForm from "@/components/noteForm.vue";
 import editNote from "@/components/editNote.vue";
+import addNote from "@/components/addNote.vue";
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
             path: "/editNote",
             name: "editNote",
             component: editNote,
+        },
+        {
+            path: "/addNote",
+            name: "addNote",
+            component: addNote,
         },
     ],
 });
