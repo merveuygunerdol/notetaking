@@ -18,7 +18,7 @@
             <div class="column">
               <search/>
               <a
-                href=""
+                href="http://localhost:8080/#/addNote"
                 class="button is-danger is-large">
               Add a Note</a>
             </div>
