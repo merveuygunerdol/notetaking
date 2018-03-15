@@ -7,9 +7,11 @@ import router from "./router";
 import note from "./components/note.vue";
 import "bulma/css/bulma.css";
 import Icon from "vue-awesome/components/Icon";
+import VueSweetAlert from "vue-sweetalert";
 
 Vue.component("note", note);
 Vue.component("icon", Icon);
+Vue.use(VueSweetAlert);
 
 Vue.config.productionTip = false;
 window.axios = axios;

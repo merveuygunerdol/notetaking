@@ -22,7 +22,9 @@
     "vue": "^2.5.2",
     "vue-awesome": "^2.3.5",
     "vue-button": "^0.1.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-sweetalert": "^0.1.18",
+    "vue-sweetalert2": "^1.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
