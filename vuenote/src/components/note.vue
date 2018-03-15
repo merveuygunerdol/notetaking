@@ -1,34 +1,89 @@
 <template>
-  <div class="tile">
-    <article class="tile is-child notification is-primary">
-      <p class="title">{{ title }}</p>
-      <p class="subtitle">{{ body }}</p>
-      <div class="buttons has-addons">
-        <a class="button is-rounded is-inverted is-primary">Edit</a>
-        <a class="button is-rounded is-danger is-inverted">Delete</a>
+  <div class="content">
+    <div class="tile">
+      <article class="tile is-child notification is-primary">
+        <p class="title">{{ title }}</p>
+        <p class="subtitle">{{ body }}</p>
+        <p class="subtitle">{{ id }}</p>
+        <div class="buttons has-addons">
+          <a class="button is-rounded is-inverted is-primary">Edit</a>
+          <a
+            class="button is-rounded is-danger is-inverted"
+            @click="remove()">Delete</a>
+        </div>
+      </article>
+    </div>
+    <div class="modal">
+      <div class="modal-background "/>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Delete this note?</p>
+        </header>
+        <section class="modal-card-body">
+          <div> You won't be able to revert this! </div>
+        </section>
+        <footer class="modal-card-foot">
+          <button
+            class="button is-danger"
+            @click="removeNote(id)">Delete Note</button>
+          <button
+            class="button"
+            @click="cancel">Cancel</button>
+        </footer>
       </div>
-    </article>
+    </div>
+
+    <div class="modal">
+      <div class="modal-background "/>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title"/>
+        </header>
+        <section class="modal-card-body">
+          <div class="is-$red"> Note Deleted</div>
+        </section>
+        <footer class="modal-card-foot">
+
+          <button
+            class="button"
+            @click="cancel">All Notes</button>
+        </footer>
+      </div>
+    </div>
 
   </div>
 </template>
 <script>
-// eslint-disable-next-line
-/* eslint-disable */
-//import Vue from 'vue'
-//import delButton from './removeButton.vue'
-  export default {
-    components: {
+import axios from "axios";
+export default {
+    props: ["title", "body", "id"],
+    data() {
+        return {
+            post:""
+        };
     },
-    props: ['title', 'body'],
-     methods: {
-           deleteNote: function(id) {
-            axios.delete('http://localhost:3030/note/' + id )
-            .then(response => this.post.id);
-            //window.location.reload();
-            console.log(this.id)
-              }
+    methods: {
+        remove(id) {
+            var modal = document.getElementsByClassName("modal");
+            modal[0].classList.add("is-active");
+            let noteId = this.id;
+            console.log(noteId);
+        },
+
+        removeNote(posts, id) {
+            var modal = document.getElementsByClassName("modal");
+            let noteId = this.id;
+            axios.delete("http://localhost:3030/note/" + noteId)
+                .then((response) => this.posts.splice(noteId, 1));
+            modal[1].classList.add("is-active");
+
+
+        },
+        cancel(){
+            window.location.reload();
         }
-        }
+    }
+};
 </script>
 <style>
   li {list-style-type: none;}
