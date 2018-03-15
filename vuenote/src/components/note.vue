@@ -45,7 +45,7 @@
         <footer class="modal-card-foot">
 
           <button
-            class="button"
+            class="button is-danger"
             @click="cancel">All Notes</button>
         </footer>
       </div>
