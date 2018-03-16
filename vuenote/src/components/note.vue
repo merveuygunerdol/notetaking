@@ -6,7 +6,9 @@
         <p class="subtitle">{{ body }}</p>
         <p class="subtitle">{{ id }}</p>
         <div class="buttons has-addons">
-          <a class="button is-rounded is-inverted is-primary">Edit</a>
+          <a
+            class="button is-rounded is-inverted is-primary"
+            href="http://localhost:8080/#/editNote">Edit</a>
           <a
             class="button is-rounded is-danger is-inverted"
             @click="remove()">Delete</a>
@@ -75,7 +77,8 @@ export default {
             let noteId = this.id;
             axios.delete("http://localhost:3030/note/" + noteId)
                 .then((response) => this.posts.splice(noteId, 1));
-            modal[1].classList.add("is-active");
+            modal[0].classList.remove("is-active");
+            window.location = "http://localhost:8080/";
 
 
         },

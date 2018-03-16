@@ -91,7 +91,7 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
-
+            window.location = "http://localhost:8080/";
         },
         allNotes(){
             location.href = "http://localhost:8080/#/";
