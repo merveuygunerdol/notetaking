@@ -8,7 +8,8 @@
         <div class="buttons has-addons">
           <a
             class="button is-rounded is-inverted is-primary"
-            href="http://localhost:8080/#/editNote">Edit</a>
+            :href="`http://localhost:8080/#/editNote/${id}`"
+            @click="edit">Edit</a>
           <a
             class="button is-rounded is-danger is-inverted"
             @click="remove()">Delete</a>
@@ -58,7 +59,20 @@
 <script>
 import axios from "axios";
 export default {
-    props: ["title", "body", "id"],
+    props: {
+        title: {
+            type: String,
+            default: this.title
+        },
+        body: {
+            type: String,
+            default: this.body
+        },
+        id: {
+            type: Number,
+            default: undefined
+        }
+    },
     data() {
         return {
             post:""
@@ -71,7 +85,6 @@ export default {
             let noteId = this.id;
             console.log(noteId);
         },
-
         removeNote(posts, id) {
             var modal = document.getElementsByClassName("modal");
             let noteId = this.id;
@@ -79,11 +92,31 @@ export default {
                 .then((response) => this.posts.splice(noteId, 1));
             modal[0].classList.remove("is-active");
             window.location = "http://localhost:8080/";
-
-
         },
         cancel(){
             window.location.reload();
+        },
+        edit(post) {
+            // let noteId = this.id;
+            // axios.get("http://localhost:3030/note/" + noteId )
+            //     .then(response => {
+            //     // JSON responses are automatically parsed.
+            //         this.post = response.data;
+            //         console.log(response.data);
+            //     })
+            //     .catch(e => {
+            //         this.errors.push(e);
+            //     });
+            // let id = this.$route.params.id;
+            // axios.get("http://localhost:3030/note/" + id)
+            //     .then(response => {
+            //         console.log(id);
+
+            //     })
+            //     .catch(e => {
+            //         this.errors.push(e);
+            //     });
+
         }
     }
 };

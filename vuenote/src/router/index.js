@@ -28,9 +28,10 @@ export default new Router({
             component: noteForm,
         },
         {
-            path: "/editNote",
+            path: "/editNote/:id",
             name: "editNote",
             component: editNote,
+            props: true,
         },
         {
             path: "/addNote",

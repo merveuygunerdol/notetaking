@@ -1,6 +1,11 @@
 <template lang="html">
   <div class="section">
     <h2 class="title is-2"> {{ editTitle }} </h2>
+    <li
+      v-for="post of posts"
+      :key="post">
+      <note v-bind="post"/>
+    </li>
     <noteForm :is-edit="true" />
   </div>
 </template>
@@ -24,25 +29,16 @@ export default {
             editTitle: "Edit This Note",
         };
     },
-    // Fetches posts when the component is created.
-    created() {
-        axios.get("http://localhost:3030/note")
+    mounted() {
+        let id = this.$route.params.id;
+        let tit = this.title;
+        axios.get("http://localhost:3030/note/" + id)
             .then(response => {
-                // JSON responses are automatically parsed.
-                this.posts = response.data;
+                console.log(id, tit);
             })
             .catch(e => {
                 this.errors.push(e);
             });
-
-    // async / await version (created() becomes async created())
-    //
-    // try {
-    //   const response = await axios.get(`http://jsonplaceholder.typicode.com/posts`)
-    //   this.posts = response.data
-    // } catch (e) {
-    //   this.errors.push(e)
-    // }
     }
 };
 </script>
