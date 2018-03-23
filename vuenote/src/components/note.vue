@@ -96,28 +96,6 @@ export default {
         cancel(){
             window.location.reload();
         },
-        edit(post) {
-            // let noteId = this.id;
-            // axios.get("http://localhost:3030/note/" + noteId )
-            //     .then(response => {
-            //     // JSON responses are automatically parsed.
-            //         this.post = response.data;
-            //         console.log(response.data);
-            //     })
-            //     .catch(e => {
-            //         this.errors.push(e);
-            //     });
-            // let id = this.$route.params.id;
-            // axios.get("http://localhost:3030/note/" + id)
-            //     .then(response => {
-            //         console.log(id);
-
-            //     })
-            //     .catch(e => {
-            //         this.errors.push(e);
-            //     });
-
-        }
     }
 };
 </script>

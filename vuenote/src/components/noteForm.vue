@@ -62,15 +62,22 @@
 <script>
 import axios from "axios";
 export default {
+    model:{
+        prop:"note"
+    },
     props: {
         isEdit: {
             type:  Boolean,
             default:  true
+        },
+        note: {
+            type: String,
+            default: ""
         }
     },
     data() {
         return {
-            note: { title:"" , body:"" }
+            note: { title:"" , body:"" },
         };
     }, methods: {
         add() {

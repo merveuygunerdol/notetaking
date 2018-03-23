@@ -1,12 +1,9 @@
 <template lang="html">
   <div class="section">
     <h2 class="title is-2"> {{ editTitle }} </h2>
-    <li
-      v-for="post of posts"
-      :key="post">
-      <note v-bind="post"/>
-    </li>
-    <noteForm :is-edit="true" />
+    <noteForm
+      :is-edit="true"
+      v-model="note"/>
   </div>
 </template>
 <script>
@@ -27,18 +24,29 @@ export default {
             posts: [],
             errors: [],
             editTitle: "Edit This Note",
+            note:{
+                title:this.title,
+                body:this.body
+            }
         };
     },
-    mounted() {
-        let id = this.$route.params.id;
-        let tit = this.title;
-        axios.get("http://localhost:3030/note/" + id)
-            .then(response => {
-                console.log(id, tit);
-            })
-            .catch(e => {
-                this.errors.push(e);
-            });
+    created() {
+        this.fetchNote();
+    },
+    methods: {
+        fetchNote(){
+            let id = this.$route.params.id;
+            axios.get("http://localhost:3030/note/" + id)
+                .then(response => {
+                    this.note = response.data;
+                    note.title = response.data.title;
+                    note.body = response.data.body;
+                    console.log(id, note.title,note.body);
+                })
+                .catch(e => {
+                    this.errors.push(e);
+                });
+        },
     }
 };
 </script>

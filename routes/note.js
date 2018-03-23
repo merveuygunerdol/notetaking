@@ -14,8 +14,7 @@ router.get('/notes', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   const note = await noteService.find(req.params.id);
-
-  res.render('note-detail', { note });
+  res.send(note);
 });
 
 router.get('/:id/json', async (req, res, next) => {
