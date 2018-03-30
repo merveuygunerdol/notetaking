@@ -29,8 +29,7 @@
               <div class="buttons">
                 <span
                   v-if="isEdit"
-                  class="button is-success"
-                  @click="edit"> Edit</span>
+                  class="button is-success"> Edit</span>
                 <span
                   v-if="!isEdit"
                   class="button is-info"
@@ -71,13 +70,14 @@ export default {
             default:  true
         },
         note: {
-            type: String,
-            default: ""
+            type: Object,
+            default: () => ({
+            })
         }
     },
     data() {
         return {
-            note: { title:"" , body:"" },
+
         };
     }, methods: {
         add() {

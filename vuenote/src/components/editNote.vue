@@ -8,7 +8,7 @@
 </template>
 <script>
 import axios from "axios";
-import HTTP from "../main.js";
+//import HTTP from "../main.js";
 import note from "@/components/note.vue";
 import search from "@/components/search.vue";
 import noteForm from "@/components/noteForm.vue";
@@ -24,10 +24,7 @@ export default {
             posts: [],
             errors: [],
             editTitle: "Edit This Note",
-            note:{
-                title:this.title,
-                body:this.body
-            }
+            note:{}
         };
     },
     created() {

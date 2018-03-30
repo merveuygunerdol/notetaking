@@ -8,8 +8,7 @@
         <div class="buttons has-addons">
           <a
             class="button is-rounded is-inverted is-primary"
-            :href="`http://localhost:8080/#/editNote/${id}`"
-            @click="edit">Edit</a>
+            :href="`http://localhost:8080/#/editNote/${id}`">Edit</a>
           <a
             class="button is-rounded is-danger is-inverted"
             @click="remove()">Delete</a>
@@ -28,7 +27,7 @@
         <footer class="modal-card-foot">
           <button
             class="button is-danger"
-            @click="removeNote(id)">Delete Note</button>
+            @click="removeNote()">Delete Note</button>
           <button
             class="button"
             @click="cancel">Cancel</button>
@@ -70,26 +69,30 @@ export default {
         },
         id: {
             type: Number,
-            default: undefined
-        }
+            default: this.id
+        },
     },
     data() {
         return {
-            post:""
+            post:"",
+            posts:[]
         };
     },
     methods: {
-        remove(id) {
+        remove() {
             var modal = document.getElementsByClassName("modal");
             modal[0].classList.add("is-active");
             let noteId = this.id;
             console.log(noteId);
         },
-        removeNote(posts, id) {
+        removeNote() {
             var modal = document.getElementsByClassName("modal");
             let noteId = this.id;
             axios.delete("http://localhost:3030/note/" + noteId)
-                .then((response) => this.posts.splice(noteId, 1));
+                .then(() => console.log(noteId))
+                .catch(e => {
+                    this.errors.push(e);
+                });
             modal[0].classList.remove("is-active");
             window.location = "http://localhost:8080/";
         },

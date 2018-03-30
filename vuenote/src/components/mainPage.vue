@@ -10,8 +10,8 @@
                 Here are your last notes
               </h2>
               <li
-                v-for="post of posts"
-                :key="post">
+                v-for="(post, index) of posts"
+                :key="index">
                 <note v-bind="post"/>
               </li>
             </div>
@@ -42,8 +42,8 @@ export default {
   },
   data() {
     return {
-      posts: [],
-      errors: [],
+      posts: "",
+      errors: "",
       mainPageTitle: 'Welcome to HelloNote'
     }
   },
@@ -51,21 +51,11 @@ export default {
   created() {
     axios.get(`http://localhost:3030/note`)
     .then(response => {
-      // JSON responses are automatically parsed.
       this.posts = response.data
     })
     .catch(e => {
       this.errors.push(e)
     })
-
-    // async / await version (created() becomes async created())
-    //
-    // try {
-    //   const response = await axios.get(`http://jsonplaceholder.typicode.com/posts`)
-    //   this.posts = response.data
-    // } catch (e) {
-    //   this.errors.push(e)
-    // }
   }
 }
 </script>

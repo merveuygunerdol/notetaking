@@ -8,18 +8,12 @@
 
       <input
         type="text"
-        v-model="searchString"
         placeholder="Search Notes" >
     </div>
 
     <ul>
       <!-- Render a li element for every entry in the computed filteredArticles array. -->
-
-      <li
-        v-for="post in posts"
-        :key="post">
-        <p>{{ note.title }}</p>
-      </li>
+      <li/>
     </ul>
 
   </form>
