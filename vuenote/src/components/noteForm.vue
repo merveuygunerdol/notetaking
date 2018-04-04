@@ -29,7 +29,8 @@
               <div class="buttons">
                 <span
                   v-if="isEdit"
-                  class="button is-success"> Edit</span>
+                  class="button is-success"
+                  @click="saveNote"> Save </span>
                 <span
                   v-if="!isEdit"
                   class="button is-info"
@@ -39,7 +40,9 @@
           </div>
         </div>
       </div>
-      <div class="modal">
+      <div
+        class="modal"
+        :class="{'is-active':isActive}">
         <div class="modal-background "/>
         <div class="modal-card">
           <header class="modal-card-head">
@@ -60,7 +63,11 @@
 </template>
 <script>
 import axios from "axios";
+import note from "@/components/note.vue";
 export default {
+    components: {
+        note
+    },
     model:{
         prop:"note"
     },
@@ -77,11 +84,12 @@ export default {
     },
     data() {
         return {
+            isActive: false,
 
         };
     }, methods: {
         add() {
-            let modal = document.getElementsByClassName("modal");
+            this.isActive = true;
             let noteId = this.id;
             console.log(noteId);
             let newNote = {
@@ -92,7 +100,7 @@ export default {
             axios.post("http://localhost:3030/note", newNote)
                 .then((response) => {
                     console.log(response.data);
-                    modal[0].classList.add("is-active");
+                    this.isActive = true;
 
                 })
                 .catch((error) => {
@@ -102,8 +110,21 @@ export default {
         },
         allNotes(){
             location.href = "http://localhost:8080/#/";
+        },
+        saveNote() {
+            console.log("merve");
+            let savedNote = {
+                title: this.note.title,
+                body: this.note.body,
+            };
+            let noteId = this.id;
+            console.log(savedNote);
+            axios.get("http://localhost:3030/note", noteId)
+                .then((response) => {
+                    console.log(response.data);
+                });
+            window.location = "http://localhost:8080/";
         }
-
     }
 };
 </script>
