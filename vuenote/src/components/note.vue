@@ -15,7 +15,9 @@
         </div>
       </article>
     </div>
-    <div class="modal">
+    <div
+      class="modal"
+      :class="{'is-active':isActive}">
       <div class="modal-background "/>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -35,7 +37,7 @@
       </div>
     </div>
 
-    <div class="modal">
+    <!-- <div class="modal">
       <div class="modal-background "/>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -51,7 +53,7 @@
             @click="cancel">All Notes</button>
         </footer>
       </div>
-    </div>
+    </div> -->
 
   </div>
 </template>
@@ -75,25 +77,25 @@ export default {
     data() {
         return {
             post:"",
-            posts:[]
+            posts:[],
+            isActive: false
         };
     },
     methods: {
         remove() {
-            var modal = document.getElementsByClassName("modal");
-            modal[0].classList.add("is-active");
+            this.isActive = true;
             let noteId = this.id;
             console.log(noteId);
         },
         removeNote() {
-            var modal = document.getElementsByClassName("modal");
+            this.isActive = true;
             let noteId = this.id;
             axios.delete("http://localhost:3030/note/" + noteId)
                 .then(() => console.log(noteId))
                 .catch(e => {
                     this.errors.push(e);
                 });
-            modal[0].classList.remove("is-active");
+            this.isActive = false;
             window.location = "http://localhost:8080/";
         },
         cancel(){
