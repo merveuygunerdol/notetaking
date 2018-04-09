@@ -101,7 +101,6 @@ export default {
                 .then((response) => {
                     console.log(response.data);
                     this.isActive = true;
-
                 })
                 .catch((error) => {
                     console.log(error);
@@ -109,17 +108,17 @@ export default {
             window.location = "http://localhost:8080/";
         },
         allNotes(){
-            location.href = "http://localhost:8080/#/";
+            location.href = "http://localhost:8080/";
         },
         saveNote() {
             console.log("merve");
             let savedNote = {
+                id : this.note.id,
                 title: this.note.title,
-                body: this.note.body,
+                body: this.note.body
             };
-            let noteId = this.id;
             console.log(savedNote);
-            axios.get("http://localhost:3030/note", noteId)
+            axios.post("http://localhost:3030/note/update", savedNote)
                 .then((response) => {
                     console.log(response.data);
                 });
