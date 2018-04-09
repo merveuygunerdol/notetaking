@@ -15,6 +15,14 @@ async function del(id) {
   return noteModel.remove({ id });
 }
 
+async function update(id, note) {
+  const noteId = { id };
+  const newNote = { $set: note };
+  noteModel.updateOne(noteId, newNote, (err, res) => {
+    if (err) throw err;
+  });
+}
+
 async function find(id) {
   return noteModel.findOne({ id }).populate('todo');
 }
@@ -24,4 +32,5 @@ module.exports = {
   find,
   add,
   del,
+  update,
 };

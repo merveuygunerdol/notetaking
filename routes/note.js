@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 
 const noteService = require('../services/note-service');
@@ -28,6 +29,16 @@ router.post('/', async (req, res, next) => {
 
   res.send(note);
 });
+
+router.post('/update', async (req, res, next) => {
+  const edittedNote = {
+    title: req.body.title,
+    body: req.body.body,
+  };
+  const note = await noteService.update(req.body.id, edittedNote);
+  res.send(note);
+});
+
 // to-do list
 router.post('/:noteId/todo', async (req, res, next) => {
   const note = await noteService.find(req.params.noteId);
