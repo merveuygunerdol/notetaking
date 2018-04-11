@@ -36,25 +36,6 @@
         </footer>
       </div>
     </div>
-
-    <!-- <div class="modal">
-      <div class="modal-background "/>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title"/>
-        </header>
-        <section class="modal-card-body">
-          <div class="is-$red"> Note Deleted</div>
-        </section>
-        <footer class="modal-card-foot">
-
-          <button
-            class="button is-danger"
-            @click="cancel">All Notes</button>
-        </footer>
-      </div>
-    </div> -->
-
   </div>
 </template>
 <script>

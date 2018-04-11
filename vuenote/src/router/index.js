@@ -7,6 +7,7 @@ import editNote from "@/components/editNote.vue";
 import addNote from "@/components/addNote.vue";
 import signUp from "@/components/signUp.vue";
 import login from "@/components/login.vue";
+import search from "@/components/search.vue";
 
 Vue.use(Router);
 
@@ -47,6 +48,11 @@ export default new Router({
             path: "/login",
             name: "login",
             component: login,
+        },
+        {
+            path: "/search",
+            name: "search",
+            component: search,
         },
     ],
 });
