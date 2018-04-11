@@ -4,30 +4,139 @@
     v-cloak>
 
     <div class="bar">
-      <!-- Create a binding between the searchString model and the text field -->
-
       <input
+        id= "input"
         type="text"
-        placeholder="Search Notes" >
+        placeholder="Search Notes"
+        v-model="search"
+        @input="onChange">
+    </div>
+    <div
+    class="wrapper">
+      <ul v-show="isOpen">
+        <li
+          v-for="(post, index) in noteList"
+          :key="index">
+          <div
+          class="card">
+            <header class="card-header">
+              <p class="card-header-title is-centered">
+                {{ post.title }}
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                {{ post.body }}
+                <br>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a
+                :href="`http://localhost:8080/#/editNote/${post.id}`"
+                class="card-footer-item">Edit</a>
+              <a
+                class="card-footer-item"
+                @click="remove(post.id)">Delete</a>
+            </footer>
+          </div>
+          <div
+            class="modal"
+            :class="{'is-active':isActive}">
+            <div class="modal-background "/>
+            <div class="modal-card">
+              <header class="modal-card-head">
+                <p class="modal-card-title">Delete this note?</p>
+              </header>
+              <section class="modal-card-body">
+                <div> You won't be able to revert this! </div>
+              </section>
+              <footer class="modal-card-foot">
+                <button
+                  class="button is-danger"
+                  @click="removeNote(post.id)">Delete Note</button>
+                <button
+                class="button">Cancel</button>
+              </footer>
+            </div>
+          </div>
+        </li>
+      </ul>
+
     </div>
 
-    <ul>
-      <!-- Render a li element for every entry in the computed filteredArticles array. -->
-      <li/>
-    </ul>
 
   </form>
 </template>
 
 <script>
+import axios from "axios";
+import note from "@/components/note.vue";
+
+export default {
+    components: {
+        note,
+    },
+    props: {
+        id: {
+            type: Number,
+            default: this.id
+        },
+    },
+    data(){
+        return {
+            posts:[],
+            search:"",
+            isOpen: false,
+            isActive: false
+        };
+    },
+    computed: {
+        noteList() {
+            return this.posts.filter(post => {
+                return post.title.toLowerCase().includes(this.search.toLowerCase());
+            });
+        }
+    },
+    created() {
+        axios.get("http://localhost:3030/note")
+            .then(response => {
+                this.posts = response.data;
+            })
+            .catch(e => {
+                this.errors.push(e);
+            });
+    },
+    methods: {
+        onChange() {
+            this.isOpen = true;
+            var input = document.getElementById("input").value;
+            if(input === "") {
+                this.isOpen = false;
+            }
+        },
+        remove(id){
+            this.isActive = true;
+            let noteId = id;
+            console.log(noteId);
+        },
+        removeNote(noteId) {
+            this.isActive = true;
+            console.log(noteId);
+            axios.delete("http://localhost:3030/note/" + noteId)
+                .then(() => window.location = "http://localhost:8080/")
+                .catch(e => {
+                    this.errors.push(e);
+                });
+            this.isActive = false;
+            window.location = "http://localhost:8080/";
+        },
+    }
+
+};
 
 </script>
 
 <style>
-/* Hide un-compiled mustache bindings
-until the Vue instance is ready */
-
-
 
 /*-------------------------
     The search input
@@ -38,7 +147,6 @@ until the Vue instance is ready */
     background-image:-webkit-linear-gradient(top, #75d0b2, #75d0b2);
     background-image:-moz-linear-gradient(top, #75d0b2, #75d0b2);
     background-image:linear-gradient(top, #75d0b2, #75d0b2);
-
     box-shadow: 0 1px 1px #ccc;
     border-radius: 2px;
 
@@ -51,7 +159,6 @@ until the Vue instance is ready */
     width: 100%;
     line-height: 19px;
     padding: 11px 0;
-
     border-radius: 2px;
     box-shadow: 0 2px 8px #c4c4c4 inset;
     text-align: left;
@@ -61,7 +168,14 @@ until the Vue instance is ready */
     font-weight: bold;
     outline: none;
     text-indent: 40px;
+    margin-bottom: 2px;
 }
+  .wrapper {
+    display: inline;
+    max-width: 444px;
+    flex-wrap: wrap;
+    padding-top: 12px;
+  }
 
 </style>
 

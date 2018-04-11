@@ -15,8 +15,10 @@
                 <note v-bind="post"/>
               </li>
             </div>
-            <div class="column">
-              <search/>
+            <div class="column is-two-fifths">
+              <div class="column">
+                <search/>
+              </div>
               <a
                 href="http://localhost:8080/#/addNote"
                 class="button is-danger is-large">
