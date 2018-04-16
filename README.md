@@ -2,7 +2,9 @@
 HelloNote is an easy way of managing your notes. 
 
 ## Project Status
-This project is currently in development.  Users can add-delete-edit and search notes. Form controls, login and signup functionalities are in progress.
+This project is currently in development. 
+Users can add-delete-edit and search notes. 
+Form controls, login and signup functionalities are in progress.
 
 ## Technologies
 
@@ -23,10 +25,9 @@ You will need `node` and `npm` installed globally on your machine.
 ```npm install```
 
 *To Start Server:*  
-```nodemon```
-
-*You will need vuejs webpack:*  
-```npm install webpack-dev-server@2.9.7 --save-dev```
+```npm run server```
 
 *Serve with hot reload at localhost:8080*  
-  ```npm run dev```
+  ```npm run dev``` // TODO: this script does not exist.
+
+// TODO: Note down how to start the database

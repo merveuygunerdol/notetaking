@@ -5,10 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc ava --verbose",
-    "test-watch": "ava --verbose --watch"
+    "test-watch": "ava --verbose --watch",
+    "server": "nodemon"
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=9.0.0 <=9.4.0",
+    "npm" : "~5.6.0"
+  },
   "dependencies": {
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
@@ -26,7 +31,9 @@
     "ava": "^0.24.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "nodemon": "^1.17.3",
     "nyc": "^11.4.1",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "webpack-dev-server": "^2.9.7"
   }
 }
