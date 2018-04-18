@@ -8,13 +8,23 @@
             <div class="field">
               <label class="label"> Title </label>
               <div class="control">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="Note Title"
-                  v-model="note.title">
+                <p class="control has-icons-left has-icons-right">
+                  <input
+                    class="input"
+                    id="title"
+                    type="text"
+                    placeholder="Note Title"
+                    v-model="note.title"
+                    @input="onChange">
+                  <span class="icon is-small is-left">
+                    <icon name="edit"/>
+                  </span>
+                </p>
               </div>
             </div>
+            <p
+              class="help is-danger"
+              v-if="controltitle">Title is required</p>
             <div class="field">
               <label class="label">Body</label>
               <div class="control">
@@ -80,15 +90,21 @@ export default {
             type: Object,
             default: () => ({
             })
-        }
+        },
     },
     data() {
         return {
             isActive: false,
+            controltitle: false
 
         };
     }, methods: {
         add() {
+            let title = document.getElementById("title").value;
+            if(title === "") {
+                this.controltitle = true;
+                return;
+            }
             this.isActive = true;
             let noteId = this.id;
             console.log(noteId);
@@ -106,6 +122,9 @@ export default {
                     console.log(error);
                 });
             window.location = "http://localhost:8080/";
+        },
+        onChange(){
+            this.controltitle = false;
         },
         allNotes(){
             location.href = "http://localhost:8080/";
