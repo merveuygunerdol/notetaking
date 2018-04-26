@@ -25,8 +25,7 @@ You will need `node` and `npm` installed globally on your machine.
 *To Start Server:*  
 ```nodemon```
 
-*You will need vuejs webpack:*  
-```npm install webpack-dev-server@2.9.7 --save-dev```
-
 *Serve with hot reload at localhost:8080*  
+  ```cd vuenote```  
+  ```npm install```   
   ```npm run dev```
